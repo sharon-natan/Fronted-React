@@ -1,0 +1,8 @@
+{
+    "sites": [ "Mamram-Army", "Marganit-Army"],
+    "vc": ["VC-Army1", "VC-Army2"],
+    "datastores": ["DataStore-Army1", "DataStore-Army"],
+    "templates": ["windows", "linux"],
+    "DataCenter": ["datacenter1", "datacenter2"],
+    "vmware_cluster": ["cluster1","cluster2"]
+}
