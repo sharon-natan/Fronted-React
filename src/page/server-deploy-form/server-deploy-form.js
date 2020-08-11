@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'react-flex-proto';
-//import { Page, Panel, Input, Select, Textarea, Switch, Breadcrumbs, EditableSelect } from 'react-blur-admin';
-import { Page, Panel, Input, Select, Textarea, Switch, Breadcrumbs, EditableSelect } from '../components/react-blur-admin/src';
+import { Page, Panel, Input, Select, Textarea, Switch, Breadcrumbs, EditableSelect } from 'react-blur-admin';
+//import { Page, Panel, Input, Select, Textarea, Switch, Breadcrumbs, EditableSelect, Button } from '../components/react-blur-admin/src';
 import { Link } from 'react-router';   
-import dataArmy  from './army.json';
-import  dataBlackDC  from './blackDC.json';
+import dataArmy from './army.json';
+import dataBlackDC from './blackDC.json';
 
 export class ServerDeployForm extends React.Component {
 
@@ -27,9 +27,11 @@ export class ServerDeployForm extends React.Component {
       currentDatacenter: "",
       currentCluster: "",
       jsonName: "",
+      select_site_placeholder : 'Select Site',
 
       // Temp Variable
-      jsonFull: {}
+      jsonFull: {},
+      list: []
       };
     }
 
@@ -44,51 +46,78 @@ export class ServerDeployForm extends React.Component {
     );
   }
 
-
-  renderPlaceholder() {
-    if (! this.props.placeholder) {
-      return <span />;
-    }
-
-    return (
-      <span className='filter-option pull-left'>
-        {this.state.value}
-      </span>
-    );
-  }
-
-  //// Start Adding Function
-
 // Setting the Parameters by the Domain Name
-setParamsByDomain(domain) {
-  this.setState({ jsonName: "data"+ domain});
-  this.setState({currentDomain: domain});
-  this.setState({jsonFull: dataBlackDC})
+async setParamsByDomain(domain) {
+  this.resetParamsByDomain(domain);
+  await  this.setState({currentDomain: domain});
+  if (domain === 'Army'){
+    await  this.setState({jsonFull: dataArmy});
+  }
+  else {
+    await  this.setState({jsonFull: dataBlackDC});
+  }
   this.setSitesByJsonDomain( this.state.jsonFull );
 }
 
 
-// Settting the Parameters by VC
-setSitesByJsonDomain(jsonDomain) {
-  this.setState( { listSites : this.createListOfOptionsForJsons(Object.keys(jsonDomain['sites'])) } )
-}
+// Settting the Parameters by lists
 
-setVCsByJsonSites(jsonDomain, currentSite) {
-  this.setState({ currentSite: currentSite})
-  this.setState( { listVC : this.createListOfOptionsForJsons(Object.keys(jsonDomain['sites'][currentSite]['vc'])) } )
+
+async setSitesByJsonDomain(jsonDomain) {
+  await this.setState( { listSites : this.createListOfOptionsForJsons(Object.keys(jsonDomain['sites'])) } )
 }
 
 
-setParamsByJsonVC(jsonDomain, currentVC) {
-  this.setState({ currentVC: currentVC})
-  this.setState( { listDatastores : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][currentVC]['datastores']) } )
-  this.setState( { listTemplates : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][this.state.currentVC]["templates"]) } ),
-  this.setState( { listDatacenters : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][this.state.currentVC]["DataCenter"]) } ),
-  this.setState( { listCluster : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][this.state.currentVC]["vmware_cluster"]) } )
+async setVCsByJsonSites(jsonDomain, currentSite) {
+  this.resetParamsBySites(currentSite)
+  await this.setState({ currentSite: currentSite})
+  await this.setState( { listVC : this.createListOfOptionsForJsons(Object.keys(jsonDomain['sites'][currentSite]['vc'])) } )
 }
 
 
-// Create the pattern from option file
+async setParamsByJsonVC(jsonDomain, currentVC) {
+  this.resetParamsByVC(currentVC)
+  await this.setState({ currentVC: currentVC})
+  await this.setState( { listDatastores : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][currentVC]['datastores']) } )
+  await this.setState( { listTemplates : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][this.state.currentVC]["templates"]) } ),
+  await this.setState( { listDatacenters : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][this.state.currentVC]["DataCenter"]) } ),
+  await this.setState( { listCluster : this.createListOfOptionsForJsons(jsonDomain['sites'][this.state.currentSite]['vc'][this.state.currentVC]["vmware_cluster"]) } )
+}
+
+
+// Reset after change functions
+
+async resetParamsByDomain(domain){
+  if ( this.state.currentDomain !== '' && this.state.currentDomain !== domain) {
+    this.siteButton.setState({value: 'Select Site'})
+    this.vcButton.setState({value: 'Select VC'})
+    this.datastoreButton.setState({value: 'Select Datastore'})
+    this.templateButton.setState({value: 'Select template'})
+    this.datacenterButton.setState({value: 'Select Datacenter'})
+    this.clusterButton.setState({value: 'Select vmware_cluster'})
+  }
+}
+
+async resetParamsBySites(site){
+  if ( this.state.currentSite !== '' && this.state.currentSite !== site) {
+    this.vcButton.setState({value: 'Select VC'})
+    this.datastoreButton.setState({value: 'Select Datastore'})
+    this.templateButton.setState({value: 'Select template'})
+    this.datacenterButton.setState({value: 'Select Datacenter'})
+    this.clusterButton.setState({value: 'Select vmware_cluster'})
+  }
+}
+
+async resetParamsByVC(vc){
+  if ( this.state.currentVC !== '' && this.state.currentVC !== vc) {
+    this.datastoreButton.setState({value: 'Select Datastore'})
+    this.templateButton.setState({value: 'Select template'})
+    this.datacenterButton.setState({value: 'Select Datacenter'})
+    this.clusterButton.setState({value: 'Select vmware_cluster'})
+  }
+}
+
+// Create the pattern from option file --- Exstra Functions
 createListOfOptionsForJsons(arrayOfKeys){
   let newJson = {}
   let newArray = []
@@ -100,7 +129,10 @@ createListOfOptionsForJsons(arrayOfKeys){
 }
 
 
+// Find third button value
 
+
+// Start Rendering
   render() {
     return (
       <Page actionBar={this.renderBreadcrumbs()} title='Server Deploy Form'>
@@ -114,32 +146,38 @@ createListOfOptionsForJsons(arrayOfKeys){
                   { value: 'BlackDC', label: 'BlackDC' },
                ]}
                 onChange={value => this.setParamsByDomain(value)}
-                 />
+                value={ this.state.currentDomain }
+                ref={(button)=>{this.domainButton = button}}
+                />
               <Select
-                placeholder='Select Site'
+                placeholder= {this.state.select_site_placeholder}
                 options= { this.state.listSites }
                 onChange={value => this.setVCsByJsonSites(this.state.jsonFull ,value)}
+                value= {this.state.currentSite}
+                ref={(button)=>{this.siteButton = button}}
                  />
-
               <Select
                 placeholder='Select VC'
                 options= {this.state.listVC}
                 onChange={value => this.setParamsByJsonVC( this.state.jsonFull, value )}
                 value={this.state.currentVC}
+                ref={(button)=>{this.vcButton = button}}
                  />
 
                 <Select
-                placeholder='Select Datastores'
+                placeholder='Select Datastore'
                 options= {this.state.listDatastores}
                 onChange={value => this.setState({ currentDatastore: value })}
-                value={this.state.currentVC}
+                value={this.state.currentDatastore}
+                ref={(button)=>{this.datastoreButton = button}}
                  />
 
                 <Select
-                placeholder='Select templates'
+                placeholder='Select Template'
                 options= {this.state.listTemplates}
                 onChange={value => this.setState({ currentTemplate: value })}
                 value={this.state.currentTemplate}
+                ref={(button)=>{this.templateButton = button}}
                  />
 
                 <Select
@@ -147,6 +185,7 @@ createListOfOptionsForJsons(arrayOfKeys){
                 options= {this.state.listDatacenters}
                 onChange={value => this.setState({ currentDatacenter: value })}
                 value={this.state.currentDatacenter}
+                ref={(button)=>{this.datacenterButton = button}}
                 />
 
                 <Select
@@ -154,6 +193,7 @@ createListOfOptionsForJsons(arrayOfKeys){
                 options= {this.state.listCluster}
                 onChange={value => this.setState({ curentCluster: value })}
                 value={this.state.curentCluster}
+                ref={(button)=>{this.clusterButton = button}}
                  />
             </Panel>
           </Col>

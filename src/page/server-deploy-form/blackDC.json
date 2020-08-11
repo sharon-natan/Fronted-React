@@ -22,8 +22,8 @@
           },
           "VC2-BlackDC_Mamram": {
             "datastores": [
-              "VC2-BlackDC_Mamram",
-              "VC2-BlackDC_Mamram"
+              "VC2-BlackDC_Mamram-Datastore",
+              "VC2-BlackDC_Mamram-Datastore"
             ],
             "templates": [
               "VC2_windows-BlackDC_Mamram",
@@ -44,8 +44,8 @@
         "vc": {
           "VC1-BlackDC_Marganit": {
             "datastores": [
-              "VC1-BlackDC_Marganit",
-              "VC1-BlackDC_Marganit"
+              "VC1-BlackDC_Marganit-Datastore",
+              "VC1-BlackDC_Marganit-Datastore"
             ],
             "templates": [
               "VC1_windows-BlackDC_Marganit",
@@ -62,8 +62,8 @@
           },
           "VC2-BlackDC_Marganit": {
             "datastores": [
-              "VC2-BlackDC_Marganit",
-              "VC2-BlackDC_Marganit"
+              "VC2-BlackDC_Marganit-Datastore",
+              "VC2-BlackDC_Marganit-Datastore"
             ],
             "templates": [
               "VC2_windows-BlackDC_Marganit",
@@ -84,8 +84,8 @@
         "vc": {
           "VC1-BlackDC_Teddy": {
             "datastores": [
-              "VC1-Teddy-BlackDC",
-              "VC1-Teddy-BlackDC"
+              "VC1-Teddy-BlackDC-Datastore",
+              "VC1-Teddy-BlackDC-Datastore"
             ],
             "templates": [
               "VC1_windows-Teddy-BlackDC",
@@ -102,8 +102,8 @@
           },
           "VC2-BlackDC_Teddy": {
             "datastores": [
-              "VC2-Teddy-BlackDC",
-              "VC2-Teddy-BlackDC"
+              "VC2-Teddy-BlackDC-Datastore",
+              "VC2-Teddy-BlackDC-Datastore"
             ],
             "templates": [
               "VC2_windows-Teddy-BlackDC",

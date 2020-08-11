@@ -17,6 +17,7 @@ export class Select extends React.Component {
         label: React.PropTypes.node,
       }),
     ),
+    typeButton: React.PropTypes.string,
     value: React.PropTypes.node,
     isSearchable: React.PropTypes.bool,
     isOpen: React.PropTypes.bool,
@@ -31,6 +32,7 @@ export class Select extends React.Component {
     isSearchable: false,
     isOpen: false,
     onToggleOpen: _.noop,
+    typeButton: '',
   }
 
   constructor(props) {
@@ -81,6 +83,12 @@ export class Select extends React.Component {
   onSelectValue(selectedValue) {
     const selectedOpt = _.find(this.props.options, { value: selectedValue });
     const value = selectedOpt && selectedOpt.label ? selectedOpt.label : this.props.placeholder;
+    /*
+    console.log('SelectOpt: ')
+    console.log(selectedOpt)
+    console.log('value: ' + value)
+    console.log('selectedValue: ' + selectedValue)
+    */
     this.setState({ isOpen: false, value });
     this.props.onChange(selectedValue);
   }
@@ -158,10 +166,13 @@ export class Select extends React.Component {
   renderPlaceholder() {
     if (! this.props.placeholder) {
       return <span />;
-    }
+    }/*
+    else if (this.props.placeholder == ''){
+      return <span />;
+    }*/
 
     return (
-      <span className='filter-option pull-left'>
+      <span className='filter-option pull-left' title={this.props.typeButton}>
         {this.state.value}
       </span>
     );
