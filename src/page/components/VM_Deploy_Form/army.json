@@ -1,0 +1,124 @@
+{
+    "sites": {
+      "Mamram-Army": {
+        "vc": {
+          "VC1-Army_Mamram": {
+            "datastores": [
+              "VC1-Army_Mamram-Datastore",
+              "VC1-Army_Mamram-Datastore"
+            ],
+            "templates": [
+              "VC1_windows-Army_Mamram-Template",
+              "VC1_linux-Army_Mamram-Template"
+            ],
+            "DataCenter": [
+              "VC1_datacenter1-Army_Mamram-Datacenter",
+              "VC1_datacenter2-Army_Mamram-Datacenter"
+            ],
+            "vmware_cluster": [
+              "VC1_cluster1-Army_Mamram-Cluster",
+              "VC1_cluster2-Army_Mamram-Cluster"
+            ]
+          },
+          "VC2-Army_Mamram": {
+            "datastores": [
+              "VC2-Army_Mamram-Datastore",
+              "VC2-Army_Mamram-Datastore"
+            ],
+            "templates": [
+              "VC2_windows-Army_Mamram",
+              "VC2_linux-Army_Mamram"
+            ],
+            "DataCenter": [
+              "VC2_datacenter1-Army_Mamram",
+              "VC2_datacenter2-Army_Mamram"
+            ],
+            "vmware_cluster": [
+              "VC2_cluster1-Army_Mamram",
+              "VC2_cluster2-Army_Mamram"
+            ]
+          }
+        }
+      },
+      "Marganit-Army": {
+        "vc": {
+          "VC1-Army_Marganit": {
+            "datastores": [
+              "VC1-Army_Marganit-Datastore",
+              "VC1-Army_Marganit-Datastore"
+            ],
+            "templates": [
+              "VC1_windows-Army_Marganit",
+              "VC1_linux-Army_Marganit"
+            ],
+            "DataCenter": [
+              "VC1_datacenter1-Army_Marganit",
+              "VC1_datacenter2-Army_Marganit"
+            ],
+            "vmware_cluster": [
+              "VC1_cluster1-Army_Marganit",
+              "VC1_cluster2-Army_Marganit"
+            ]
+          },
+          "VC2-Army_Marganit": {
+            "datastores": [
+              "VC2-Army_Marganit-Datastore",
+              "VC2-Army_Marganit-Datastore"
+            ],
+            "templates": [
+              "VC2_windows-Army_Marganit",
+              "VC2_linux-Army_Mamram"
+            ],
+            "DataCenter": [
+              "VC2_datacenter1-Army_Marganit",
+              "VC2_datacenter2-Army_Marganit"
+            ],
+            "vmware_cluster": [
+              "VC2_cluster1-Army_Marganit",
+              "VC2_cluster2-Army_Marganit"
+            ]
+          }
+        }
+      },
+      "Teddy-Army": {
+        "vc": {
+          "VC1-Army_Teddy": {
+            "datastores": [
+              "VC1-Teddy-Army-Datastore",
+              "VC1-Teddy-Army-Datastore"
+            ],
+            "templates": [
+              "VC1_windows-Teddy-Army",
+              "VC1_linux-Teddy-Army"
+            ],
+            "DataCenter": [
+              "VC1_datacenter1-Teddy-Army",
+              "VC1_datacenter2-Teddy-Army"
+            ],
+            "vmware_cluster": [
+              "VC1_cluster1-Teddy-Army",
+              "VC1_cluster2-Teddy-Army"
+            ]
+          },
+          "VC2-Army_Teddy": {
+            "datastores": [
+              "VC2-Teddy-Army-Datastore",
+              "VC2-Teddy-Army-Datastore"
+            ],
+            "templates": [
+              "VC2_windows-Teddy-Army",
+              "VC2_linux-Teddy-Army"
+            ],
+            "DataCenter": [
+              "VC2_datacenter1-Teddy-Army",
+              "VC2_datacenter2-Teddy-Army"
+            ],
+            "vmware_cluster": [
+              "VC2_cluster1-Teddy-Army",
+              "VC2_cluster2-Teddy-Army"
+            ]
+          }
+        }
+      }
+    }
+  }

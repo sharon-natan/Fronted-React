@@ -1,0 +1,124 @@
+{
+    "sites": {
+      "Mamram-BlackDC": {
+        "vc": {
+          "VC1-BlackDC_Mamram": {
+            "datastores": [
+              "VC1-BlackDC_Mamram-Datastore",
+              "VC1-BlackDC_Mamram-Datastore"
+            ],
+            "templates": [
+              "VC1_windows-BlackDC_Mamram-Template",
+              "VC1_linux-BlackDC_Mamram-Template"
+            ],
+            "DataCenter": [
+              "VC1_datacenter1-BlackDC_Mamram-Datacenter",
+              "VC1_datacenter2-BlackDC_Mamram-Datacenter"
+            ],
+            "vmware_cluster": [
+              "VC1_cluster1-BlackDC_Mamram-Cluster",
+              "VC1_cluster2-BlackDC_Mamram-Cluster"
+            ]
+          },
+          "VC2-BlackDC_Mamram": {
+            "datastores": [
+              "VC2-BlackDC_Mamram-Datastore",
+              "VC2-BlackDC_Mamram-Datastore"
+            ],
+            "templates": [
+              "VC2_windows-BlackDC_Mamram",
+              "VC2_linux-BlackDC_Mamram"
+            ],
+            "DataCenter": [
+              "VC2_datacenter1-BlackDC_Mamram",
+              "VC2_datacenter2-BlackDC_Mamram"
+            ],
+            "vmware_cluster": [
+              "VC2_cluster1-BlackDC_Mamram",
+              "VC2_cluster2-BlackDC_Mamram"
+            ]
+          }
+        }
+      },
+      "Marganit-BlackDC": {
+        "vc": {
+          "VC1-BlackDC_Marganit": {
+            "datastores": [
+              "VC1-BlackDC_Marganit-Datastore",
+              "VC1-BlackDC_Marganit-Datastore"
+            ],
+            "templates": [
+              "VC1_windows-BlackDC_Marganit",
+              "VC1_linux-BlackDC_Marganit"
+            ],
+            "DataCenter": [
+              "VC1_datacenter1-BlackDC_Marganit",
+              "VC1_datacenter2-BlackDC_Marganit"
+            ],
+            "vmware_cluster": [
+              "VC1_cluster1-BlackDC_Marganit",
+              "VC1_cluster2-BlackDC_Marganit"
+            ]
+          },
+          "VC2-BlackDC_Marganit": {
+            "datastores": [
+              "VC2-BlackDC_Marganit-Datastore",
+              "VC2-BlackDC_Marganit-Datastore"
+            ],
+            "templates": [
+              "VC2_windows-BlackDC_Marganit",
+              "VC2_linux-BlackDC_Mamram"
+            ],
+            "DataCenter": [
+              "VC2_datacenter1-BlackDC_Marganit",
+              "VC2_datacenter2-BlackDC_Marganit"
+            ],
+            "vmware_cluster": [
+              "VC2_cluster1-BlackDC_Marganit",
+              "VC2_cluster2-BlackDC_Marganit"
+            ]
+          }
+        }
+      },
+      "Teddy-BlackDC": {
+        "vc": {
+          "VC1-BlackDC_Teddy": {
+            "datastores": [
+              "VC1-Teddy-BlackDC-Datastore",
+              "VC1-Teddy-BlackDC-Datastore"
+            ],
+            "templates": [
+              "VC1_windows-Teddy-BlackDC",
+              "VC1_linux-Teddy-BlackDC"
+            ],
+            "DataCenter": [
+              "VC1_datacenter1-Teddy-BlackDC",
+              "VC1_datacenter2-Teddy-BlackDC"
+            ],
+            "vmware_cluster": [
+              "VC1_cluster1-Teddy-BlackDC",
+              "VC1_cluster2-Teddy-BlackDC"
+            ]
+          },
+          "VC2-BlackDC_Teddy": {
+            "datastores": [
+              "VC2-Teddy-BlackDC-Datastore",
+              "VC2-Teddy-BlackDC-Datastore"
+            ],
+            "templates": [
+              "VC2_windows-Teddy-BlackDC",
+              "VC2_linux-Teddy-BlackDC"
+            ],
+            "DataCenter": [
+              "VC2_datacenter1-Teddy-BlackDC",
+              "VC2_datacenter2-Teddy-BlackDC"
+            ],
+            "vmware_cluster": [
+              "VC2_cluster1-Teddy-BlackDC",
+              "VC2_cluster2-Teddy-BlackDC"
+            ]
+          }
+        }
+      }
+    }
+  }
