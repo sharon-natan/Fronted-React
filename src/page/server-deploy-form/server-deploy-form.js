@@ -26,12 +26,9 @@ export class ServerDeployForm extends React.Component {
       currentTemplate: "",
       currentDatacenter: "",
       currentCluster: "",
-      jsonName: "",
-      select_site_placeholder : 'Select Site',
 
       // Temp Variable
       jsonFull: {},
-      list: []
       };
     }
 
@@ -90,31 +87,46 @@ async setParamsByJsonVC(jsonDomain, currentVC) {
 async resetParamsByDomain(domain){
   if ( this.state.currentDomain !== '' && this.state.currentDomain !== domain) {
     this.siteButton.setState({value: 'Select Site'})
+    this.setState({currentSite: ""})
     this.vcButton.setState({value: 'Select VC'})
+    this.setState({currentVC: ""})
     this.datastoreButton.setState({value: 'Select Datastore'})
-    this.templateButton.setState({value: 'Select template'})
+    this.setState({currentDatastore: ""})
+    this.templateButton.setState({value: 'Select Template'})
+    this.setState({currentTemplate: ""})
     this.datacenterButton.setState({value: 'Select Datacenter'})
+    this.setState({currentDatacenter: ""})
     this.clusterButton.setState({value: 'Select vmware_cluster'})
+    this.setState({currentCluster: ""})
   }
 }
 
 async resetParamsBySites(site){
   if ( this.state.currentSite !== '' && this.state.currentSite !== site) {
     this.vcButton.setState({value: 'Select VC'})
+    this.setState({currentVC: ""})
     this.datastoreButton.setState({value: 'Select Datastore'})
-    this.templateButton.setState({value: 'Select template'})
+    this.setState({currentDatastore: ""})
+    this.templateButton.setState({value: 'Select Template'})
+    this.setState({currentTemplate: ""})
     this.datacenterButton.setState({value: 'Select Datacenter'})
+    this.setState({currentDatacenter: ""})
     this.clusterButton.setState({value: 'Select vmware_cluster'})
+    this.setState({currentCluster: ""})  
   }
 }
 
 async resetParamsByVC(vc){
   if ( this.state.currentVC !== '' && this.state.currentVC !== vc) {
     this.datastoreButton.setState({value: 'Select Datastore'})
-    this.templateButton.setState({value: 'Select template'})
+    this.setState({currentDatastore: ""})
+    this.templateButton.setState({value: 'Select Template'})
+    this.setState({currentTemplate: ""})
     this.datacenterButton.setState({value: 'Select Datacenter'})
+    this.setState({currentDatacenter: ""})
     this.clusterButton.setState({value: 'Select vmware_cluster'})
-  }
+    this.setState({currentCluster: ""})  
+    }
 }
 
 // Create the pattern from option file --- Exstra Functions
@@ -128,12 +140,9 @@ createListOfOptionsForJsons(arrayOfKeys){
   return newArray
 }
 
-
-// Find third button value
-
-
 // Start Rendering
   render() {
+    console.log(this.state)
     return (
       <Page actionBar={this.renderBreadcrumbs()} title='Server Deploy Form'>
         <Row>
@@ -150,7 +159,7 @@ createListOfOptionsForJsons(arrayOfKeys){
                 ref={(button)=>{this.domainButton = button}}
                 />
               <Select
-                placeholder= {this.state.select_site_placeholder}
+                placeholder= "Select Site"
                 options= { this.state.listSites }
                 onChange={value => this.setVCsByJsonSites(this.state.jsonFull ,value)}
                 value= {this.state.currentSite}
